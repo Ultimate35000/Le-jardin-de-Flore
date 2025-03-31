@@ -6,6 +6,10 @@ html{
     min-height: 100%;
 }
 
+main{
+    margin-bottom: 154px;
+}
+
 footer.footer{
     padding: 15px;
     position: absolute;
@@ -44,4 +48,8 @@ p{
         justify-content: center;
 
     }
+}
+
+.text-justify{
+    text-align: justify;
 }
