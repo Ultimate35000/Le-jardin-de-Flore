@@ -12034,6 +12034,7 @@ p {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
   transition: all 0.3s;
 }
@@ -12057,4 +12058,8 @@ p {
   display: block;
   color: #344E41;
   padding: 10px;
+}
+
+.mdp i {
+  position: absolute;
 }/*# sourceMappingURL=main.css.map */
