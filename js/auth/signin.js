@@ -6,9 +6,9 @@ btnSignin.addEventListener("click", checkCredentials);
 
 function checkCredentials(){
     if(mailInput.value == "test@mail.com" && passwordInput.value == "123"){
-        alert("Vous êtes connecté");
 
         const token = "fqdfhqdfhqdfhdhqdhqdfhqfdh";
+        setToken(token);
 
         window.location.replace("/");
 
