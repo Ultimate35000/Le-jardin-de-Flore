@@ -17,6 +17,8 @@ jobs:
         protocol: ftps
         port: 22
 
+        time-out: 190000
+
         exclude: |
           **/.git*
           **/.git*/**
