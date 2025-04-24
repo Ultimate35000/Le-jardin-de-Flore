@@ -12,9 +12,10 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftp-aujardindeflore.alwaysdata.net
-        port: 21
         username: aujardindeflore
         password: ${{ secrets.ftp_password }}
+        protocol: ftps
+        port: 21
         exclude: |
           **/.git*
           **/.git*/**
