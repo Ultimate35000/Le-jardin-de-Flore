@@ -20,10 +20,9 @@ jobs:
         max-files: 3
         
         
-        timeout: 600000       
-        conn-timeout: 60000 
-        keapalive: 10000
-    
+        timeout: 600000            # 10 min
+        log-level: verbose
+        
         exclude: |
           **/.git*
           **/.git*/**
