@@ -1,29 +1,26 @@
-name: Deploy with SFTP
-on:
-       push:
-        branches: [main]
-
-        jobs:
-        deploy:
-        runs-on: ubuntu-latest
-        steps:
-        uses: actions/checkout@v4
-
-        name: Upload via SFTP
-        uses: appleboy/scp-action@v0.1.4
-        with:
-        host: ssh-aujardindeflore.alwaysdata.net   # fourni par AlwaysData
-        username: ${{ secrets.SSH_USER }}          # créez/activez un accès SSH dans l’interface
-        password: ${{ secrets.SSH_PASS }}          # ou `key`, `passphrase` si clé privée
+on: push
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ssh-aujardindeflore.alwaysdata.net
+        username: aujardindeflore
+        password: ${{ secrets.ftp_password }}
+        protocol: sftp
         port: 22
-        source: "./dist/*"
-        target: "/home/sshuser/www/"               # dossier distant
 
-        
         exclude: |
           **/.git*
           **/.git*/**
           **/node_modules/bootstrap/scss/**
           **/node_modules/bootstrap/js/**
           **/node_modules/bootstrap-icons/icons/**  
-          server-dir: /www/
+        server-dir: /www/
