@@ -90,6 +90,12 @@ window.addEventListener('load', async () => {
     showAndHideElementsForRoles();
     document.getElementById('loader').style.display = 'none';
   });
+
+  function sanitizeHtml(text){
+    const tempHtml = document.createElement('div');
+    tempHtml.textContent = text;
+    return tempHtml.innerHTML;
+}
   
   
 
