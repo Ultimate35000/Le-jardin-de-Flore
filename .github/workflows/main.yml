@@ -6,17 +6,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: 📂 Sync files
-     
+    - name: 📂 Install dependencies
+      uses: actions/setup-node@v2
       with:
-        server: ssh-aujardindeflore.alwaysdata.net
-        username: aujardindeflore
-        password: ${{ secrets.ftp_password }}
-        protocol: ftps
-        port: 22 
+        node-version: '14'  
 
+    - name: 📂 Install npm dependencies
+      run: npm install
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ftp-aujardindeflore.alwaysdata.net
+        username: aujardindeflore
+        password : ${{ secrets.ftp_password }}
         exclude: |
           **/.git*
           **/.git*/**
@@ -24,3 +29,4 @@ jobs:
           **/node_modules/bootstrap/js/**
           **/node_modules/bootstrap-icons/icons/**  
         server-dir: /www/
+
